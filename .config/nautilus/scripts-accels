@@ -1,0 +1,7 @@
+; "Spawn" a terminal in the current directory
+; https://askubuntu.com/a/1079882
+F4 Terminal
+
+; In ~/.local/share/nautilus/scripts/Terminal:
+; #! /usr/bin/env bash
+; alacritty

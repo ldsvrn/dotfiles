@@ -1,0 +1,78 @@
+directory: ~/Musique/Music
+library: ~/Musique/musiclibrary.db
+plugins: fetchart fuzzy edit convert smartplaylist mpdupdate fish acousticbrainz info summarize describe info
+# bug python 3.10: describe pbm analyser web lastgenre
+fetchart:
+    sources: filesystem coverart itunes amazon
+
+fuzzy:
+    threshold: 0.7
+    prefix: '~'
+
+edit:
+    itemfields: track title artist album albumartist
+    albumfields: album albumartist artist genre
+
+lastgenre:
+    auto: false
+
+smartplaylist:
+    playlist_dir: ~/.mpd/playlists
+    #    relative_to: ~/Musique/Music
+    
+    # test playlists
+    playlists:
+        - name: accept.m3u
+          query: 'artist:Accept'
+        - name: acdc.m3u
+          query: 'artist:AC/DC'
+        - name: rammstein.m3u
+          query: 'artist:Rammstein'
+        
+        - name: ado.m3u
+          query: 'artist:Ado'
+        - name: nier.m3u
+          query: 'album:Nier:Automata'
+
+convert:
+    dest: ~/Musique/MusicCompressed
+    never_convert_lossy_files: yes
+    copy_album_art: yes
+    embed: yes
+    format: opus192
+    album_art_maxwidth: 500
+    formats:
+        opus192:
+            command: opusenc --bitrate 192 $source $dest
+            extension: opus
+        opus128:
+            command: opusenc --bitrate 128 $source $dest
+            extension: opus
+        mp3:
+            command: ffmpeg -i $source -q:a 1 $dest
+            extension: mp3
+        mp3_noart:
+            command: ffmpeg -i $source -vn -q:a 1 $dest
+            extension: mp3
+        mp3v0:
+            command: ffmpeg -i $source -q:a 0 $dest
+            extension: mp3
+        mp3max:
+            command: ffmpeg -i $source -b:a 320k $dest
+            extension: mp3
+        mp3v3:
+            command: ffmpeg -i $source -q:a 3 $dest
+            extension: mp3
+        alac_noart:
+            command: ffmpeg -i $source -c:a alac -vn $dest
+            extension: m4a
+        alac_art:
+            command: ffmpeg -i $source -c:a alac -c:v copy $dest
+            extension: m4a
+        flac_noart:
+            command: ffmpeg -i $source -c:a flac -vn $dest
+            extension: flac
+        flac_art:
+            command: ffmpeg -i $source -c:a flac -c:v copy $dest
+            extension: flac
+
