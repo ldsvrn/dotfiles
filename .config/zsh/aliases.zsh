@@ -7,6 +7,7 @@ alias pacsear='pacman -Ss'
 alias pacup='doas pacman -Syu'
 alias pym='python -m'
 alias cleanup='doas pacman -Rns $(pacman -Qtdq)'
+alias update-mirrors='doas reflector --country France,Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 
 # Typing mistakes
 alias systemclt='systemctl'

@@ -1,7 +1,7 @@
 directory: ~/Musique/Music
 library: ~/Musique/musiclibrary.db
-plugins: fetchart fuzzy edit convert smartplaylist mpdupdate fish acousticbrainz info summarize describe info
-# bug python 3.10: describe pbm analyser web lastgenre
+plugins: fetchart fuzzy edit convert smartplaylist mpdupdate acousticbrainz info summarize describe info
+# disabled: describe pbm analyser web lastgenre fish
 fetchart:
     sources: filesystem coverart itunes amazon
 

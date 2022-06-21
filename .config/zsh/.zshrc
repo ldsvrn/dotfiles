@@ -159,23 +159,24 @@ fi
 
 pfetch
 
-### PROMPT (taken from a random dude on discord)###
-setopt PROMPT_SUBST                            # Enable parameter expansion, command substitution and arithmetic expansion in prompts
+#### PROMPT (taken from a random dude on discord)###
+#setopt PROMPT_SUBST                            # Enable parameter expansion, command substitution and arithmetic expansion in prompts
+#
+#autoload -Uz vcs_info                        # Load version control function
+#add-zsh-hook precmd vcs_info                # Add precommand hook for version control function
+#
+#zstyle ':vcs_info:*' enable git
+#zstyle ':vcs_info:git:*' formats $' %F{5}\UF841 %b%f'
+#
+#if [ "${UID}" = "0" ]; then
+#    _user_code='%F{1}%B#%b%f '
+#else
+#    _user_code='%F{2}%B$%b%f '
+#fi
+#
+##NEWLINE=$'\n' # Needed for some reason
+#PROMPT="%F{6}%~%b%f${vcs_info_msg_0_}%F{7}%f ${_user_code}"
+#
+#unset _user_code
 
-autoload -Uz vcs_info                        # Load version control function
-add-zsh-hook precmd vcs_info                # Add precommand hook for version control function
-
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git:*' formats $' %F{5}\UF841 %b%f'
-
-if [ "${UID}" = "0" ]; then
-    _user_code='%F{1}%B#%b%f '
-else
-    _user_code='%F{2}%B$%b%f '
-fi
-
-NEWLINE=$'\n' # Needed for some reason
-PROMPT="${NEWLINE}%F{6}%~%b%f${vcs_info_msg_0_}%F{7}%f ${_user_code}"
-
-unset _user_code
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"
