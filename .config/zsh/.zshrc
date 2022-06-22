@@ -28,16 +28,6 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;3C" ""
 bindkey "^[[1;3D" ""
 
-### SOURCES ###
-source $ZDOTDIR/aliases.zsh
-source $ZDOTDIR/plugins/cursor_mode.zsh
-source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-
-source /usr/share/fzf/completion.zsh
-source /usr/share/fzf/key-bindings.zsh
-
 ### COMPLETIONS ###
 autoload -Uz compinit; compinit
 _comp_options+=(globdots)
@@ -50,6 +40,18 @@ fpath=(/usr/share/zsh/site-functions/ $fpath)
 zstyle ':completion:*:*:*:default' menu yes select
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' list-colors ''
+
+### SOURCES ###
+source $ZDOTDIR/aliases.zsh
+source $ZDOTDIR/plugins/fzf-tab/fzf-tab.plugin.zsh
+source $ZDOTDIR/plugins/cursor_mode.zsh
+source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source $ZDOTDIR/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
 
 ### PATH ###
 if [ -d "$HOME/.bin" ] ;

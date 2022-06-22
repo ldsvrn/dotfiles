@@ -55,7 +55,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'junegunn/goyo.vim'                           " Distraction-free viewing
 "    Plug 'junegunn/limelight.vim'                      " Hyperfocus on a range
     Plug 'junegunn/vim-emoji'                          " Vim needs emojis!
-
+    
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}     " Language server
 call plug#end()
 
 " USE GRUVBOX THEME
