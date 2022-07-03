@@ -32,11 +32,16 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-/home/louis/.config/audiofix.sh &
+#/home/louis/.config/audiofix.sh &
 setxkbmap fr -option compose:menu &
 xrandr --output DVI-D-0 --mode 1280x1024 --pos 0x0 --rotate normal --output HDMI-0 --primary --mode 1680x1050 --pos 1280x0 --rotate normal --output DP-0 --off --output DP-1 --off &
 nm-applet &
 lxsession &
+picom &
+flameshot &
+variety &
+thunderbird &
+keepassxc &
 rclone mount onedrive: ~/onedrive/ &
 #exec qtile start
 exec awesome

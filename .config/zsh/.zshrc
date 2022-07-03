@@ -43,6 +43,7 @@ zstyle ':completion:*' list-colors ''
 
 ### SOURCES ###
 source $ZDOTDIR/aliases.zsh
+# source $ZDOTDIR/de.zsh # was drunk
 source $ZDOTDIR/plugins/fzf-tab/fzf-tab.plugin.zsh
 source $ZDOTDIR/plugins/cursor_mode.zsh
 source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

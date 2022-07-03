@@ -30,6 +30,9 @@ if awesome.startup_errors then
                      text = awesome.startup_errors })
 end
 
+package.path = package.path .. ";/usr/share/powerline/bindings/awesome/?.lua"
+require("powerline")
+
 -- Handle runtime errors after startup
 do
     local in_error = false
@@ -243,6 +246,7 @@ awful.screen.connect_for_each_screen(function(s)
             mytextclock,
             mycal.widget,
             s.mylayoutbox,
+            --powerline_widget,
         },
     }
 end)
@@ -658,11 +662,3 @@ end
 
 client.connect_signal("focus", border_adjust)
 client.connect_signal("focus", gap_adjust)
-
--- AUTOSTART """"""""""""""""""""""""""""
-awful.spawn("picom")
-awful.spawn("fcitx5")
-awful.spawn("flameshot")
-awful.spawn("variety")
-awful.spawn("thunderbird")
-awful.spawn("keepassxc")
