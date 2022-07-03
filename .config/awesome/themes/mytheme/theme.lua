@@ -7,7 +7,7 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font          = "Sauce Code Pro 8"
+theme.font          = "FiraCode Nerd Font 8"
 
 -- Dark Gruvbox Colors
 theme.lightred    = "#fb4934"
