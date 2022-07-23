@@ -311,6 +311,8 @@ globalkeys = gears.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
+    awful.key({ modkey, "Shift"   }, "Return", function () awful.spawn("st") end,
+              {description = "open st", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
@@ -355,7 +357,7 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.spawn("rofi -show run")      end,
+    awful.key({ modkey },            "r",     function () awful.spawn("dmenu_run")      end,
               {description = "run prompt", group = "launcher"}),
     awful.key({ modkey, "Shift"   }, "r",     function () awful.spawn("rofi -show drun -show-icons")      end,
               {description = "run prompt (desktop)", group = "launcher"}),
