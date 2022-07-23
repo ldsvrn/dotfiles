@@ -1,3 +1,6 @@
+unalias rm
+unalias ip
+
 alias entfernen= "rm"
 alias systemkontrolle= "systemctl"
 alias textverarbeitungsprogramm= "nvim"
