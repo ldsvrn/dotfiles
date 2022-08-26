@@ -35,11 +35,11 @@ smartplaylist:
           query: 'album:Nier:Automata'
 
 convert:
-    dest: ~/Musique/MusicCompressed
+    dest: ~/Musique/MusicCompressed128
     never_convert_lossy_files: yes
     copy_album_art: yes
     embed: yes
-    format: opus192
+    format: opus128
     album_art_maxwidth: 500
     formats:
         opus192:
@@ -47,6 +47,7 @@ convert:
             extension: opus
         opus128:
             command: opusenc --bitrate 128 $source $dest
+            extension: opus
             extension: opus
         mp3:
             command: ffmpeg -i $source -q:a 1 $dest
@@ -75,4 +76,4 @@ convert:
         flac_art:
             command: ffmpeg -i $source -c:a flac -c:v copy $dest
             extension: flac
-
+        removeart: music_convert $source $dest
