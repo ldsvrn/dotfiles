@@ -559,18 +559,17 @@ awful.rules.rules = {
       }, properties = { titlebars_enabled = false }
     },
 
-    -- Screen 2= main & screen 1= shitty 4:3.
     { rule = { class = "firefox" },
         properties = { screen = 1, tag = "1" } },
     
-    { rule = { class = "Thunderbird" },
+    { rule = { class = "thunderbird" },
         properties = { screen = 2, tag = "2" } },
     
     { rule = { class = "strawberry" },
         properties = { screen = 1, tag = "9" } },
     
     { rule = { class = "clementine" },
-        properties = { screen = 1, tag = "9" } },
+        properties = { screen = 2, tag = "3" } },
 
     { rule = { class = "discord" },
         properties = { screen = 2, tag = "1" } },

@@ -7,6 +7,7 @@ set TERM "xterm-256color"                # Sets the terminal type
 set fish_greeting                        # Supress fish's greeting
 set EDITOR "nvim"
 set VISUAL "code"
+set -U fish_features all
 
 # ENV VARS
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'" 
@@ -125,6 +126,7 @@ end
 
 # Aliases file
 source ~/.config/fish/aliases.fish
+source ~/.config/fish/completions/beet.fish
 
 pfetch
 #fortune -a -c | cowsay | lolcat # pip install lolcat (less deps)
