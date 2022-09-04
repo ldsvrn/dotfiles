@@ -563,7 +563,7 @@ awful.rules.rules = {
     { rule = { class = "firefox" },
         properties = { screen = 1, tag = "1" } },
     
-    { rule = { class = "Thunderbird" },
+    { rule = { class = "thunderbird" },
         properties = { screen = 2, tag = "2" } },
     
     { rule = { class = "strawberry" },
