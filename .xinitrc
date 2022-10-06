@@ -34,8 +34,8 @@ fi
 
 #/home/louis/.config/audiofix.sh &
 setxkbmap fr -option compose:menu &
-#xrandr --output DVI-D-0 --mode 1280x1024 --pos 0x0 --rotate normal --output HDMI-0 --primary --mode 1680x1050 --pos 1280x0 --rotate normal --output DP-0 --off --output DP-1 --off &
-xrandr --output DVI-D-0 --mode 1440x900 --pos 0x150 --rotate normal --output HDMI-0 --primary --mode 1680x1050 --pos 1440x0 --rotate normal --output DP-0 --off --output DP-1 --off
+#xrandr --output DVI-D-0 --mode 1440x900 --pos 0x150 --rotate normal --output HDMI-0 --primary --mode 1680x1050 --pos 1440x0 --rotate normal --output DP-0 --off
+xrandr --output DVI-D-0 --mode 1440x900 --pos 0x270 --rotate normal --output HDMI-0 --primary --mode 1680x1050 --pos 1440x195 --rotate normal --output DP-0 --off --output DP-1 --mode 1440x900 --pos 3120x0 --rotate right
 nm-applet &
 lxsession &
 picom &
