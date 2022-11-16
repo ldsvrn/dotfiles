@@ -1,2 +1,3 @@
 .config/mpv/shaders/** linguist-vendored
 .config/awesome/freedesktop/** linguist-vendored
+.config/awesome/themes/mytheme/** linguist-vendored
