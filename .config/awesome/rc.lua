@@ -568,7 +568,7 @@ awful.rules.rules = {
     { rule = { class = "strawberry" },
         properties = { screen = 1, tag = "9" } },
     
-    { rule = { class = "clementine" },
+    { rule = { class = "clementine, Clementine" },
         properties = { screen = 3, tag = "2" } },
 
     { rule = { class = "discord" },
@@ -652,14 +652,15 @@ function border_adjust(c)
     end
 end
 
+beautiful.useless_gap = 3
 -- No gaps if only one window on screen
-function gap_adjust(c)
-    if #c.screen.clients == 1 then
-        beautiful.useless_gap = 0
-    elseif #c.screen.clients > 1 then
-        beautiful.useless_gap = 3
-    end
-end
+--function gap_adjust(c)
+--    if #c.screen.clients == 1 then
+--        beautiful.useless_gap = 0
+--    elseif #c.screen.clients > 1 then
+--        beautiful.useless_gap = 3
+--    end
+--end
 
 client.connect_signal("focus", border_adjust)
-client.connect_signal("focus", gap_adjust)
+-- client.connect_signal("focus", gap_adjust)
