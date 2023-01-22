@@ -20,12 +20,16 @@ if grep -q Arch /etc/os-release
 
     alias py='python'
     alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
-    alias update-mirrors='sudo reflector --country France,Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+    alias update-mirrors='sudo reflector --country France,Germany,Netherlands --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 end 
 
 # Typing mistakes
 abbr systemclt 'systemctl'
 abbr cope 'code'
+
+# useful stuff
+abbr gitc 'git commit -a -S -m "'
+abbr gitp 'git push'
 
 # whatever this is
 abbr apple 'mpv "https://www.youtube.com/watch?v=FtutLA63Cp8" --vo=tct'
@@ -42,7 +46,7 @@ alias wgup='wg-quick up wg0'
 alias wgdown='wg-quick down wg0'
 alias wg-quick='wg-quick'
 
-# Cursed
+# aaaaaa
 alias flex='neofetch'
 alias die='shutdown -P now'
 
