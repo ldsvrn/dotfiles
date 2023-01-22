@@ -365,6 +365,8 @@ globalkeys = gears.table.join(
               {description = "run xkill", group = "launcher"}),
     awful.key({ }, "Print",     function () awful.spawn("flameshot gui")      end,
               {description = "take a screenshot (flameshot)", group = "launcher"}),
+    awful.key({ "Shift" }, "Print",     function () awful.spawn("gyazo")      end,
+              {description = "take a screenshot (gyazo)", group = "launcher"}),
 
     awful.key({ modkey }, "x",
               function ()
@@ -542,6 +544,7 @@ awful.rules.rules = {
         name = {
           "pulsemixer",
           "Event Tester",  -- xev.
+          "SAE3.02",
         },
         role = {
           "AlarmWindow",  -- Thunderbird's calendar.
@@ -560,7 +563,7 @@ awful.rules.rules = {
     },
 
     { rule = { class = "firefox" },
-        properties = { screen = 1, tag = "1" } },
+        properies = { screen = 1, tag = "1" } },
     
     { rule = { class = "thunderbird" },
         properties = { screen = 2, tag = "2" } },

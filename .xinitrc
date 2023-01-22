@@ -32,6 +32,9 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+# log public ip addresses, just want to know if mine is static or not
+curl ifconfig.me | xargs -I '{}' printf "$(date +'%Y-%m-%dT%H:%M:%SZ')\t{}\n" >> .log/ipaddress.log &
+
 #/home/louis/.config/audiofix.sh &
 setxkbmap fr -option compose:menu &
 #xrandr --output DVI-D-0 --mode 1440x900 --pos 0x150 --rotate normal --output HDMI-0 --primary --mode 1680x1050 --pos 1440x0 --rotate normal --output DP-0 --off
@@ -43,6 +46,7 @@ flameshot &
 variety &
 thunderbird &
 keepassxc &
-rclone mount onedrive: ~/onedrive/ &
+#rclone mount onedrive: ~/onedrive/ &
+rclone mount secret: onedrive_crypt/ --vfs-cache-mode writes &
 #exec qtile start
 exec awesome

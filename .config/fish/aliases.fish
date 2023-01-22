@@ -9,6 +9,7 @@ abbr pacup 'sudo pacman -Syu'
 abbr pym 'python -m'
 # Typing mistakes
 abbr systemclt 'systemctl'
+alias cope='code'
 
 ### ALIASES ###
 ### Packages managers ###
@@ -24,11 +25,11 @@ alias sl='exa -la --color=always --sort=type --icons'
 alias config='git --git-dir=$HOME/.dotfiles-repo/ --work-tree=$HOME' 
 
 # To switch from sudo to doas
-alias sudo='doas'
-alias sudoedit='doasedit'
-alias wgup='doas wg-quick up wg0'
-alias wgdown='doas wg-quick down wg0'
-alias wg-quick='doas wg-quick'
+#alias sudo='doas'
+#alias sudoedit='doasedit'
+alias wgup='wg-quick up wg0'
+alias wgdown='wg-quick down wg0'
+alias wg-quick='wg-quick'
 
 # Cursed
 alias flex='neofetch'
@@ -63,10 +64,10 @@ alias netcons='sudo lsof -nP -i'
 # Convenience
 alias keyfix='setxkbmap fr -option caps:swapescape -option compose:menu'
 alias py='python'
-alias vpnon='doas systemctl enable expressvpn --now'
-alias vpnoff='expressvpn disconnect; sudo systemctl disable expressvpn --now'
-alias vpncon='expressvpn connect'
-alias vpndis='expressvpn disconnect'
+#alias vpnon='doas systemctl enable expressvpn --now'
+#alias vpnoff='expressvpn disconnect; sudo systemctl disable expressvpn --now'
+#alias vpncon='expressvpn connect'
+#alias vpndis='expressvpn disconnect'
 alias x='startx'
 alias open='xdg-open'
 
