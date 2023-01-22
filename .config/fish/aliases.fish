@@ -1,32 +1,40 @@
 ### ABBR ###
-# Packages managers
-abbr inst 'sudo pacman -S'
-abbr aurup 'paru -Sua'
-abbr aur 'paru -S'
-abbr pacrem 'sudo pacman -Rs'
-abbr pacsear 'pacman -Ss'
-abbr pacup 'sudo pacman -Syu'
-abbr pym 'python -m'
+# Packages Managers
+if grep -q Debian /etc/os-release
+    abbr inst 'sudo apt install'
+    abbr rem 'sudo apt remove'
+    abbr sear 'apt search'
+    abbr up 'sudo apt update && sudo apt upgrade'
+
+    alias py='python3'
+    alias code='codium'
+end
+
+if grep -q Arch /etc/os-release
+    abbr inst 'sudo pacman -S'
+    abbr aurup 'paru -Sua'
+    abbr aur 'paru -S'
+    abbr rem 'sudo pacman -Rs'
+    abbr sear 'pacman -Ss'
+    abbr up 'sudo pacman -Syu'
+
+    alias py='python'
+    alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
+    alias update-mirrors='sudo reflector --country France,Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+end 
+
 # Typing mistakes
 abbr systemclt 'systemctl'
-alias cope='code'
+abbr cope 'code'
 
 ### ALIASES ###
 ### Packages managers ###
 alias pym='python -m'
-alias cleanup='doas pacman -Rns $(pacman -Qtdq)'
-alias update-mirrors='doas reflector --country France,Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
-
-# Typing mistakes
-alias train='env sl' # Because I keep using this stupid command
-alias sl='exa -la --color=always --sort=type --icons'
 
 # Alias for dotfiles bare git repo
 alias config='git --git-dir=$HOME/.dotfiles-repo/ --work-tree=$HOME' 
 
 # To switch from sudo to doas
-#alias sudo='doas'
-#alias sudoedit='doasedit'
 alias wgup='wg-quick up wg0'
 alias wgdown='wg-quick down wg0'
 alias wg-quick='wg-quick'
@@ -64,7 +72,7 @@ alias netcons='sudo lsof -nP -i'
 # Convenience
 alias keyfix='setxkbmap fr -option caps:swapescape -option compose:menu'
 alias py='python'
-#alias vpnon='doas systemctl enable expressvpn --now'
+#alias vpnon='sudo systemctl enable expressvpn --now'
 #alias vpnoff='expressvpn disconnect; sudo systemctl disable expressvpn --now'
 #alias vpncon='expressvpn connect'
 #alias vpndis='expressvpn disconnect'
@@ -81,9 +89,6 @@ alias .5='cd ../../../../..'
 alias ytdl='yt-dlp'
 alias ytdla="yt-dlp --extract-audio --audio-format best"
 alias ytdlao="yt-dlp --extract-audio --audio-format opus "
-#alias ytdlp='yt-dlp'
 
-# gpg encryption
 # verify signature for isos
 alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
-# receive the key of a developer
