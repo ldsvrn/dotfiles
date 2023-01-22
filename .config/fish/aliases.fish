@@ -27,6 +27,9 @@ end
 abbr systemclt 'systemctl'
 abbr cope 'code'
 
+# whatever this is
+abbr apple 'mpv "https://www.youtube.com/watch?v=FtutLA63Cp8" --vo=tct'
+
 ### ALIASES ###
 ### Packages managers ###
 alias pym='python -m'
