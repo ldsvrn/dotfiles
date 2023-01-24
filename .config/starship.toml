@@ -48,6 +48,9 @@ symbol = ".NET "
 
 [directory]
 read_only = " ro"
+truncation_length = 5
+truncation_symbol = "..."
+truncate_to_repo = false
 
 [docker_context]
 symbol = "docker "
@@ -143,6 +146,7 @@ Windows = "win "
 
 [package]
 symbol = "pkg "
+disabled = true
 
 [perl]
 symbol = "pl "
