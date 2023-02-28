@@ -1,7 +1,7 @@
 directory: ~/Musique/Music
 library: ~/Musique/musiclibrary.db
-plugins: fetchart fuzzy edit convert smartplaylist mpdupdate acousticbrainz info summarize describe info fish
-# disabled: describe pbm analyser web lastgenre fish
+plugins: fetchart fuzzy edit convert smartplaylist mpdupdate acousticbrainz info info fish
+# disabled: describe pbm analyser web lastgenre fish summarize
 fetchart:
     sources: filesystem coverart itunes amazon
 
