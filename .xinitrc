@@ -43,7 +43,7 @@ nm-applet &
 lxsession &
 picom &
 flameshot &
-variety &
+#variety &
 thunderbird &
 keepassxc &
 #rclone mount onedrive: ~/onedrive/ &
