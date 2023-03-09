@@ -33,13 +33,15 @@ from libqtile.utils import guess_terminal
 import os
 import subprocess
 
+from libqtile.log_utils import logger
+
 mod = "mod4"
 terminal = guess_terminal()
 
 @hook.subscribe.startup_once
 def start_once():
-    home = os.path.expanduser("~")
-    #subprocess.call([home + "/.screenlayout/screen.sh"])
+    #home = os.path.expanduser("~")
+    subprocess.call("feh --bg-fill .config/wallpaper")
 
 keys = [
     # Switch between windows
@@ -69,8 +71,22 @@ keys = [
     Key([mod, "control"], "j", lazy.layout.grow_down(),
         desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-
+    Key([mod], "n",
+        lazy.layout.normalize(),
+        desc='normalize window size ratios'
+        ),
+    Key([mod], "m",
+        lazy.layout.maximize(),
+        desc='toggle window between minimum and maximum sizes'
+        ),
+    Key([mod, "shift"], "f",
+        lazy.window.toggle_floating(),
+        desc='toggle floating'
+        ),
+    Key([mod], "f",
+        lazy.window.toggle_fullscreen(),
+        desc='toggle fullscreen'
+        ),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -85,10 +101,10 @@ keys = [
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawn("rofi -show run"),
-        desc="Spawn a command using a prompt widget"),
+    Key([mod], "r", lazy.spawn("dmenu_run"), desc="Spawn a command using dmenu"),
     ]
 
+# this allows for switching on a azerty keyboard
 group_names = ["ampersand", "eacute", "quotedbl", "apostrophe", "parenleft", "section", "egrave", "exclam", "ccedilla",]
 #group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", ]
 group_label = ["1", "2", "3", "4", "5", "6", "7", "8", "9",]
@@ -121,14 +137,20 @@ for i in groups:
         #     desc="move focused window to group {}".format(i.name)),
     ])
 
+layout_theme = {"border_width": 2,
+                "margin": 8,
+                "border_focus": "#d75f5f",
+                "border_normal": "#1D2330"
+                }
+
 layouts = [
-    layout.Columns(border_focus_stack='#d75f5f'),
+    layout.Columns(**layout_theme),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    layout.MonadTall(),
+    layout.MonadTall(**layout_theme),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -144,10 +166,10 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-screens = [
-    Screen(
-        top=bar.Bar(
-            [
+# only one systray is allowed
+def init_widget_list(systray = False):
+    tray = widget.Systray()
+    wid = [
                 widget.CurrentLayout(),
                 widget.GroupBox(),
                 widget.Prompt(),
@@ -158,15 +180,25 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("Je reste frais!", name="frais"),
-                widget.Systray(),
+                tray,
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
                 widget.QuickExit(),
-            ],
-            24,
-        ),
-    ),
-]
+            ]
+    if not systray:
+        wid.remove(tray)
+    return wid
+
+def init_screens():
+    return [
+        Screen(top=bar.Bar(widgets=init_widget_list(True), size=24)),
+        Screen(top=bar.Bar(widgets=init_widget_list(), size=24)),
+        Screen(top=bar.Bar(widgets=init_widget_list(), size=24)),
+    ]
+
+# dunno why i put this here but ppl on the internet are doing it sooo
+if __name__ == "config":
+    screens = init_screens()
+    widget_list = init_widget_list()
 
 # Drag floating layouts.
 mouse = [
