@@ -30,9 +30,6 @@ if awesome.startup_errors then
                      text = awesome.startup_errors })
 end
 
-package.path = package.path .. ";/usr/share/powerline/bindings/awesome/?.lua"
-require("powerline")
-
 -- Handle runtime errors after startup
 do
     local in_error = false
@@ -569,16 +566,13 @@ awful.rules.rules = {
         properties = { screen = 2, tag = "2" } },
     
     { rule = { class = "strawberry" },
-        properties = { screen = 1, tag = "9" } },
+        properties = { screen = 2, tag = "9" } },
     
     { rule = { class = "clementine, Clementine" },
-        properties = { screen = 3, tag = "2" } },
+        properties = { screen = 2, tag = "9" } },
 
     { rule = { class = "discord" },
         properties = { screen = 3, tag = "1" } },
-    
-    { rule = { class = "Ferdi" },
-        properties = { screen = 2, tag = "1" } },
 }
 -- }}}
 

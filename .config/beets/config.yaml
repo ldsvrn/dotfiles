@@ -1,6 +1,6 @@
-directory: ~/Musique/Music
-library: ~/Musique/musiclibrary.db
-plugins: fetchart fuzzy edit convert smartplaylist mpdupdate acousticbrainz info info fish
+directory: ~/music/library/
+library: ~/music/musiclibrary.db
+plugins: fetchart fuzzy edit convert smartplaylist mpdupdate info info fish describe
 # disabled: describe pbm analyser web lastgenre fish summarize
 fetchart:
     sources: filesystem coverart itunes amazon
@@ -35,7 +35,7 @@ smartplaylist:
           query: 'album:Nier:Automata'
 
 convert:
-    dest: ~/Musique/MusicCompressed128
+    dest: ~/music/MusicCompressed128
     never_convert_lossy_files: yes
     copy_album_art: yes
     embed: yes
