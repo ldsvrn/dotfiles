@@ -83,6 +83,15 @@ opt.mouse = "a"
 g.mapleader = " "
 g.maplocalleader = " "
 
+
+-- do not try to configure lualine if packer is not installed
+local status, packer = pcall(require, "packer")
+if not status then
+	print("Packer is not installed")
+	return
+end
+
+
 local ok, _ = pcall(vim.cmd, "colorscheme dracula")
 -- this is lualine's default config
 require('lualine').setup {
