@@ -34,7 +34,9 @@ home = os.path.expanduser('~')
 dpath = f"{home}/.local/bin"
 fpath = f"{dpath}/osu_{ver}.appimage"
 
+# kill picom to prevent stutters
 def launch_osu():
+    subprocess.Popen(["pkill", "picom"])
     subprocess.Popen(["nohup", fpath], 
                 preexec_fn=os.setpgrp,
                 stdout=subprocess.DEVNULL,
