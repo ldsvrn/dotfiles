@@ -1,9 +1,11 @@
+#!/usr/bin/env zsh
 # Functions are stolen from DistroTube's dotfiles
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 export GPG_TTY=$(tty) #if not zshenv 
 
+#
 if [ $(tty) = "/dev/tty1" ]
 then
     startx
@@ -32,11 +34,8 @@ bindkey "^[[1;3D" ""
 autoload -Uz compinit; compinit
 _comp_options+=(globdots)
 fpath=(/usr/share/zsh/site-functions/ $fpath)
-## Enable more "fuzzy" completions (fish-like)
-#zstyle ':completion:*' matcher-list 'r:[[:ascii:]]||[[:ascii:]]=** r:|=* m:{a-z\-}={A-Z\_}'
-## Or:
-#zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-# Another one (enables select like fish):
+
+# this is not really nessessary since fzf is used if installed
 zstyle ':completion:*:*:*:default' menu yes select
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' list-colors ''
@@ -44,15 +43,17 @@ zstyle ':completion:*' list-colors ''
 ### SOURCES ###
 source $ZDOTDIR/aliases.zsh
 # source $ZDOTDIR/de.zsh # was drunk
-source $ZDOTDIR/plugins/fzf-tab/fzf-tab.plugin.zsh
 source $ZDOTDIR/plugins/cursor_mode.zsh
 source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source $ZDOTDIR/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-source /usr/share/fzf/completion.zsh
-source /usr/share/fzf/key-bindings.zsh
+if [ -d "/usr/share/fzf" ]; then
+    source $ZDOTDIR/plugins/fzf-tab/fzf-tab.plugin.zsh
+    source /usr/share/fzf/completion.zsh
+    source /usr/share/fzf/key-bindings.zsh
+fi
 
 ### PATH ###
 if [ -d "$HOME/.bin" ] ;
@@ -126,7 +127,7 @@ fi
 IFS=$SAVEIFS
 
 # navigation
-up () {
+upd () {
   local d=""
   local limit="$1"
 
@@ -155,31 +156,6 @@ twitch() {
     mpv "https://twitch.tv/$@" 2> /dev/null
 }
 
-### BASH INSULTER (works in zsh though) ###
-if [ -f /etc/bash.command-not-found ]; then
-    . /etc/bash.command-not-found
-fi
-
 pfetch
-
-#### PROMPT (taken from a random dude on discord)###
-#setopt PROMPT_SUBST                            # Enable parameter expansion, command substitution and arithmetic expansion in prompts
-#
-#autoload -Uz vcs_info                        # Load version control function
-#add-zsh-hook precmd vcs_info                # Add precommand hook for version control function
-#
-#zstyle ':vcs_info:*' enable git
-#zstyle ':vcs_info:git:*' formats $' %F{5}\UF841 %b%f'
-#
-#if [ "${UID}" = "0" ]; then
-#    _user_code='%F{1}%B#%b%f '
-#else
-#    _user_code='%F{2}%B$%b%f '
-#fi
-#
-##NEWLINE=$'\n' # Needed for some reason
-#PROMPT="%F{6}%~%b%f${vcs_info_msg_0_}%F{7}%f ${_user_code}"
-#
-#unset _user_code
 
 eval "$(starship init zsh)"

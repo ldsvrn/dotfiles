@@ -27,21 +27,14 @@ end
 abbr systemclt 'systemctl'
 abbr cope 'code'
 
-# useful stuff
-abbr gitc 'git commit -a -S -m "'
+# git
+abbr gitc 'git commit -a -S'
 abbr gitp 'git push'
-
-# whatever this is
-abbr apple 'mpv "https://www.youtube.com/watch?v=FtutLA63Cp8" --vo=tct'
-
-### ALIASES ###
-### Packages managers ###
-alias pym='python -m'
 
 # Alias for dotfiles bare git repo
 alias config='git --git-dir=$HOME/.dotfiles-repo/ --work-tree=$HOME' 
 
-# To switch from sudo to doas
+# wireguard
 alias wgup='wg-quick up wg0'
 alias wgdown='wg-quick down wg0'
 alias wg-quick='wg-quick'
@@ -50,16 +43,15 @@ alias wg-quick='wg-quick'
 alias flex='neofetch'
 alias die='shutdown -P now'
 
-# Blingbling
-alias ls='exa -la --group --color=always --sort=type --icons'
-alias ll='exa -l --group --color=always --sort=type --icons'
+# exa is ls
+alias ls='exa -la --group --color=always --sort=type --icons --octal-permissions'
+alias ll='exa -l --group --color=always --sort=type --icons --octal-permissions'
 alias l='exa --color=always --sort=type --icons'
 alias la='exa -a --color=always --sort=type --icons'
 
+# vim is nvim
 alias vim='nvim'
 alias v='nvim'
-alias cls='/usr/bin/env clear'
-alias say='fortune | cowsay | lolcat'
 
 # Adding flags
 alias cp="cp -i"            # Ask before overwriting
@@ -75,16 +67,6 @@ alias ip='ip -c=auto'
 alias fd='fd --hidden --color=auto'
 
 alias netcons='sudo lsof -nP -i'
-
-# Convenience
-alias keyfix='setxkbmap fr -option caps:swapescape -option compose:menu'
-alias py='python'
-#alias vpnon='sudo systemctl enable expressvpn --now'
-#alias vpnoff='expressvpn disconnect; sudo systemctl disable expressvpn --now'
-#alias vpncon='expressvpn connect'
-#alias vpndis='expressvpn disconnect'
-alias x='startx'
-alias open='xdg-open'
 
 alias ..='cd ..'
 alias ...='cd ../..'

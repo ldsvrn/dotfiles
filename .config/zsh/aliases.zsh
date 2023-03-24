@@ -1,40 +1,53 @@
-### Packages managers ###
-alias inst='doas pacman -S'
-alias aurup='paru -Sua'
-alias aur='paru -S'
-alias pacrem='doas pacman -Rs'
-alias pacsear='pacman -Ss'
-alias pacup='doas pacman -Syu'
-alias pym='python -m'
-alias cleanup='doas pacman -Rns $(pacman -Qtdq)'
-alias update-mirrors='doas reflector --country France,Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+if grep -q Debian /etc/os-release; then
+    alias inst='sudo apt install'
+    alias rem='sudo apt remove'
+    alias sear='apt search'
+    alias up='sudo apt update && sudo apt upgrade'
+
+    alias py='python3'
+    alias code='codium'
+elif grep -q Arch /etc/os-release; then
+    alias inst='sudo pacman -S'
+    alias aurup='paru -Sua'
+    alias aur='paru -S'
+    alias rem='sudo pacman -Rs'
+    alias sear='pacman -Ss'
+    alias up='sudo pacman -Syu'
+
+    alias py='python'
+    alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
+    alias update-mirrors='sudo reflector --country France,Germany,Netherlands --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+fi
 
 # Typing mistakes
 alias systemclt='systemctl'
-alias train='env sl' # Because I keep using this stupid command
-alias sl='exa -la --color=always --sort=type --icons'
+alias cope='code'
+
+# git
+alias gitc='git commit -a -S'
+alias gitp='git push'
 
 # Alias for dotfiles bare git repo
 alias config='git --git-dir=$HOME/.dotfiles-repo/ --work-tree=$HOME' 
 
-# To switch from sudo to doas
+# wireguard
 alias wgup='wg-quick up wg0'
 alias wgdown='wg-quick down wg0'
+alias wg-quick='wg-quick'
 
-# Cursed
+# aaaaaa
 alias flex='neofetch'
 alias die='shutdown -P now'
 
-# Blingbling
-alias ls='exa -la --group --color=always --sort=type --icons'
-alias ll='exa -l --group --color=always --sort=type --icons'
+# exa is ls
+alias ls='exa -la --group --color=always --sort=type --icons --octal-permissions'
+alias ll='exa -l --group --color=always --sort=type --icons --octal-permissions'
 alias l='exa --color=always --sort=type --icons'
 alias la='exa -a --color=always --sort=type --icons'
 
+# vim is nvim
 alias vim='nvim'
 alias v='nvim'
-alias cls='/usr/bin/env clear'
-alias say='fortune | cowsay | lolcat'
 
 # Adding flags
 alias cp="cp -i"            # Ask before overwriting
@@ -51,16 +64,6 @@ alias fd='fd --hidden --color=auto'
 
 alias netcons='sudo lsof -nP -i'
 
-# Convenience
-alias keyfix='setxkbmap fr -option caps:swapescape -option compose:menu'
-alias py='python'
-#alias vpnon='doas systemctl enable expressvpn --now'
-#alias vpnoff='expressvpn disconnect; sudo systemctl disable expressvpn --now'
-#alias vpncon='expressvpn connect'
-#alias vpndis='expressvpn disconnect'
-alias x='startx'
-alias open='xdg-open'
-
 alias ..='cd ..'
 alias ...='cd ../..'
 alias .3='cd ../../..'
@@ -71,9 +74,6 @@ alias .5='cd ../../../../..'
 alias ytdl='yt-dlp'
 alias ytdla="yt-dlp --extract-audio --audio-format best"
 alias ytdlao="yt-dlp --extract-audio --audio-format opus "
-#alias ytdlp='yt-dlp'
 
-# gpg encryption
 # verify signature for isos
 alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
-# receive the key of a developer
