@@ -1,12 +1,22 @@
-#
-# ~/.bashrc
-#
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export CUDA_VISIBLE_DEVICES=0 
-# Cleanup
+### PATH ###
+if [ -d "$HOME/.bin" ] ;
+  then PATH="$HOME/.bin:$PATH"
+fi
+
+if [ -d "$HOME/.local/bin" ] ;
+  then PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -d "$HOME/Applications" ] ;
+  then PATH="$HOME/Applications:$PATH"
+fi
+
+if [ -d "$HOME/.config/scripts" ]
+  then PATH="$HOME/.config/scripts:$PATH"
+fi
 
 source ~/.config/zsh/aliases.zsh
 alias x="startx"
