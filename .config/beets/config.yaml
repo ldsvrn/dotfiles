@@ -11,7 +11,7 @@ fuzzy:
 
 edit:
     itemfields: track title artist album albumartist
-    albumfields: album albumartist artist genre
+    albumfields: album albumartist artist genre year
 
 lastgenre:
     auto: false

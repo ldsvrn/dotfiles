@@ -542,6 +542,7 @@ awful.rules.rules = {
           "pulsemixer",
           "Event Tester",  -- xev.
           "SAE3.02",
+          "About Mozilla Firefox"
         },
         role = {
           "AlarmWindow",  -- Thunderbird's calendar.

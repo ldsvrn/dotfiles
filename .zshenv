@@ -13,12 +13,13 @@ export EDITOR="nvim"
 #export VISUAL="code"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-export RUSTUP_HOME="$XDG_DATA_HOME"/rustup 
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export XDG_CACHE_HOME="$HOME"/.cache
 export XDG_DATA_HOME="$HOME"/.local/share
 export XDG_CONFIG_HOME="$HOME"/.config
 
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup 
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+
+#export GTK_IM_MODULE=fcitx
+#export QT_IM_MODULE=fcitx
+#export XMODIFIERS=@im=fcitx

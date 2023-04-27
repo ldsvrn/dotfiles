@@ -5,11 +5,16 @@
 [[ $- != *i* ]] && return
 export GPG_TTY=$(tty) #if not zshenv 
 
-#
-if [ $(tty) = "/dev/tty1" ]
-then
+# startx on login on tty1
+if [ $(tty) = "/dev/tty1" ]; then
     startx
 fi
+
+# term title
+case $TERM in alacritty*)
+    precmd () {print -Pn "\e]0;%~\a"}
+    ;;
+esac
 
 ### SETOPT ###
 setopt appendhistory
@@ -17,8 +22,8 @@ setopt appendhistory
 setopt AUTO_MENU COMPLETE_IN_WORD AUTO_CD extendedglob
 
 ### SET VI MODE ###
-bindkey -v
-export KEYTIMEOUT=1
+bindkey -e # too annoyed by vi lol
+#export KEYTIMEOUT=1
 # Fix backspace bug when switching modes
 bindkey "^?" backward-delete-char
 
@@ -35,11 +40,6 @@ autoload -Uz compinit; compinit
 _comp_options+=(globdots)
 fpath=(/usr/share/zsh/site-functions/ $fpath)
 
-# this is not really nessessary since fzf is used if installed
-zstyle ':completion:*:*:*:default' menu yes select
-zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-zstyle ':completion:*' list-colors ''
-
 ### SOURCES ###
 source $ZDOTDIR/aliases.zsh
 # source $ZDOTDIR/de.zsh # was drunk
@@ -53,35 +53,28 @@ if [ -d "/usr/share/fzf" ]; then
     source $ZDOTDIR/plugins/fzf-tab/fzf-tab.plugin.zsh
     source /usr/share/fzf/completion.zsh
     source /usr/share/fzf/key-bindings.zsh
+else
+    zstyle ':completion:*:*:*:default' menu yes select
+    zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+    zstyle ':completion:*' list-colors ''
 fi
 
 ### PATH ###
-if [ -d "$HOME/.bin" ] ;
-  then PATH="$HOME/.bin:$PATH"
+if [ -d "$HOME/.bin" ]; then
+    PATH="$HOME/.bin:$PATH"
 fi
 
-if [ -d "$HOME/.local/bin" ] ;
-  then PATH="$HOME/.local/bin:$PATH"
+if [ -d "$HOME/.local/bin" ]; then
+    PATH="$HOME/.local/bin:$PATH"
 fi
 
-if [ -d "$HOME/Applications" ] ;
-  then PATH="$HOME/Applications:$PATH"
+if [ -d "$HOME/Applications" ]; then
+    PATH="$HOME/Applications:$PATH"
 fi
 
-if [ -d "$HOME/.config/scripts" ]
-  then PATH="$HOME/.config/scripts:$PATH"
+if [ -d "$HOME/.config/scripts" ]; then
+    PATH="$HOME/.config/scripts:$PATH"A
 fi
-
-
-### CHANGE TITLE OF TERMINALS ###
-case ${TERM} in
-  xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|alacritty|st|konsole*)
-    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
-        ;;
-  screen*)
-    PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"'
-    ;;
-esac
 
 ### Function extract for common file formats ###
 SAVEIFS=$IFS
