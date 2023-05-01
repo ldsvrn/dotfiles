@@ -73,7 +73,7 @@ if [ -d "$HOME/Applications" ]; then
 fi
 
 if [ -d "$HOME/.config/scripts" ]; then
-    PATH="$HOME/.config/scripts:$PATH"A
+    PATH="$HOME/.config/scripts:$PATH"
 fi
 
 ### Function extract for common file formats ###
