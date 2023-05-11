@@ -135,6 +135,14 @@ mytextclock = wibox.widget.textclock()
 
 mycal = lain.widget.cal()
 
+-- it works !!!! ;)
+local widget_netspeeds = lain.widget.net {
+    iface = "enp4s0",
+    settings = function()
+        widget:set_markup(" " .. math.floor(net_now.sent * 0.008) .. "  " .. math.floor(net_now.received * 0.008))
+    end
+}
+
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
                     awful.button({ }, 1, function(t) t:view_only() end),
@@ -236,7 +244,8 @@ awful.screen.connect_for_each_screen(function(s)
             s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
-        { -- Right widgets
+        { -- Right widgetsA
+            widget_netspeeds,
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),

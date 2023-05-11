@@ -40,13 +40,14 @@ alias flex='neofetch'
 alias die='shutdown -P now'
 
 # exa is ls
-alias ls='exa -la --group --color=always --sort=type --icons --octal-permissions'
+alias ls='exa -la --group --color=always --sort=type --icons --octal-permissions --colour-scale --git'
 alias ll='exa -l --group --color=always --sort=type --icons --octal-permissions'
 alias l='exa --color=always --sort=type --icons'
 alias la='exa -a --color=always --sort=type --icons'
 
 # vim is nvim
 alias vim='nvim'
+alias vi='nvim'
 alias v='nvim'
 
 # Adding flags

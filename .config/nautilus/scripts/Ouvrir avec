@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-# https://stackoverflow.com/questions/1574898/bash-and-filenames-with-spaces#1574921 AHAHA IT WORKS
-(IFS=$'\n'; $(dmenu_path | rofi -p "Ouvrir avec" -dmenu) $NAUTILUS_SCRIPT_SELECTED_FILE_PATHS)
