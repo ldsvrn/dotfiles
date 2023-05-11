@@ -139,7 +139,7 @@ mycal = lain.widget.cal()
 local widget_netspeeds = lain.widget.net {
     iface = "enp4s0",
     settings = function()
-        widget:set_markup(" " .. math.floor(net_now.sent * 0.008) .. "  " .. math.floor(net_now.received * 0.008))
+        widget:set_markup(" " .. math.floor(net_now.received * 0.008) .. " Mbps" .. "  " .. math.floor(net_now.sent * 0.008) .. " Mbps")
     end
 }
 
