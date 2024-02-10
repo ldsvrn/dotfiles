@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+import json
+import requests
+import os
+import glob
+import subprocess
+from tqdm import tqdm
+
+latest = json.loads(requests.get("https://api.github.com/repos/ppy/osu/releases/latest").text)
+
+ver = latest["name"]
+appimage = ""
+for asset in latest["assets"]:
+    if asset["name"] == "osu.AppImage":
+        appimage = asset["browser_download_url"]
+
+# https://stackoverflow.com/a/62113293
+def download(url: str, fname: str):
+    resp = requests.get(url, stream=True)
+    total = int(resp.headers.get('content-length', 0))
+    # Can also replace 'file' with a io.BytesIO object
+    with open(fname, 'wb') as file, tqdm(
+        desc=fname,
+        total=total,
+        unit='iB',
+        unit_scale=True,
+        unit_divisor=1024,
+    ) as bar:
+        for data in resp.iter_content(chunk_size=1024):
+            size = file.write(data)
+            bar.update(size)
+
+home = os.path.expanduser('~')
+dpath = f"{home}/.local/bin"
+fpath = f"{dpath}/osu_{ver}.appimage"
+
+# kill picom to prevent stutters
+def launch_osu():
+    subprocess.Popen(["pkill", "picom"])
+    subprocess.Popen(["nohup", fpath], 
+                preexec_fn=os.setpgrp,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                )
+
+if not os.path.exists(fpath):
+    print("new version available, starting download...")
+    for filename in glob.glob(f"{dpath}/osu*.appimage"):
+        os.remove(filename)
+    download(appimage, fpath)
+    subprocess.Popen(["chmod", "+x", fpath])
+
+print("launching...")
+launch_osu()

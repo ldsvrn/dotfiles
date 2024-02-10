@@ -1,0 +1,4 @@
+#!/bin/bash
+WP=$1
+feh --bg-fill "$WP" "$WP" 2> /dev/null
+exit 0

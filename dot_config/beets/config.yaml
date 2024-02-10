@@ -1,0 +1,61 @@
+directory: ~/music/library/
+library: ~/music/musiclibrary.db
+plugins: fetchart fuzzy edit convert smartplaylist mpdupdate info info fish describe
+# disabled: describe pbm analyser web lastgenre fish summarize
+fetchart:
+    sources: filesystem coverart itunes amazon
+
+fuzzy:
+    threshold: 0.7
+    prefix: '~'
+
+edit:
+    itemfields: track title artist album albumartist
+    albumfields: album albumartist artist genre year
+
+lastgenre:
+    auto: false
+
+convert:
+    dest: ~/music/MusicCompressed128
+    never_convert_lossy_files: yes
+    copy_album_art: yes
+    embed: yes
+    format: opus128
+    album_art_maxwidth: 500
+    formats:
+        opus192:
+            command: opusenc --bitrate 192 $source $dest
+            extension: opus
+        opus128:
+            command: opusenc --bitrate 128 $source $dest
+            extension: opus
+            extension: opus
+        mp3:
+            command: ffmpeg -i $source -q:a 1 $dest
+            extension: mp3
+        mp3_noart:
+            command: ffmpeg -i $source -vn -q:a 1 $dest
+            extension: mp3
+        mp3v0:
+            command: ffmpeg -i $source -q:a 0 $dest
+            extension: mp3
+        mp3max:
+            command: ffmpeg -i $source -b:a 320k $dest
+            extension: mp3
+        mp3v3:
+            command: ffmpeg -i $source -q:a 3 $dest
+            extension: mp3
+        alac_noart:
+            command: ffmpeg -i $source -c:a alac -vn $dest
+            extension: m4a
+        alac_art:
+            command: ffmpeg -i $source -c:a alac -c:v copy $dest
+            extension: m4a
+        flac_noart:
+            command: ffmpeg -i $source -c:a flac -vn $dest
+            extension: flac
+        flac_art:
+            command: ffmpeg -i $source -c:a flac -c:v copy $dest
+            extension: flac
+        removeart: music_convert $source $dest
