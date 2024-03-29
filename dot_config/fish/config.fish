@@ -80,9 +80,8 @@ end
 
 # Aliases file
 source ~/.config/fish/aliases.fish
-source ~/.config/fish/completions/beet.fish
 
-pfetch
+fastfetch
 
 # Starship prompt
 starship init fish | source
