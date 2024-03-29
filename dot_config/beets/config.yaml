@@ -1,6 +1,6 @@
-directory: ~/music/library/
-library: ~/music/musiclibrary.db
-plugins: fetchart fuzzy edit convert smartplaylist mpdupdate info info fish describe
+directory: ~/Music/library/
+library: ~/Music/musiclibrary.db
+plugins: fetchart fuzzy edit convert smartplaylist mpdupdate info info
 # disabled: describe pbm analyser web lastgenre fish summarize
 fetchart:
     sources: filesystem coverart itunes amazon
