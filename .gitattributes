@@ -1,4 +1,5 @@
-.config/mpv/shaders/** linguist-vendored
-.config/awesome/freedesktop/** linguist-vendored
-.config/awesome/themes/mytheme/** linguist-vendored
-.config/mpv/scripts/** linguist-vendored
+dot_config/mpv/shaders/** linguist-vendored
+dot_config/awesome/freedesktop/** linguist-vendored
+dot_config/awesome/themes/mytheme/** linguist-vendored
+dot_config/mpv/scripts/** linguist-vendored
+dot_config/zsh/plugins/** linguist-vendored
