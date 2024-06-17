@@ -78,3 +78,7 @@ alias ytdlao="yt-dlp --extract-audio --audio-format opus "
 
 # verify signature for isos
 alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
+
+#tailscale
+alias tup="sudo systemctl start tailscaled && tailscale up --accept-routes"
+alias tdown="tailscale down && sudo systemctl stop tailscaled"

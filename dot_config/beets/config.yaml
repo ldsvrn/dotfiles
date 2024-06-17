@@ -1,13 +1,17 @@
 directory: ~/Music/library/
 library: ~/Music/musiclibrary.db
-plugins: fetchart fuzzy edit convert smartplaylist mpdupdate info info
-# disabled: describe pbm analyser web lastgenre fish summarize
+plugins: fetchart fuzzy edit convert smartplaylist info lyrics
+# disabled: describe pbm analyser web lastgenre fish summarize mpdupdate
 fetchart:
     sources: filesystem coverart itunes amazon
 
 fuzzy:
     threshold: 0.7
     prefix: '~'
+
+lyrics:
+    auto: no
+    sources: tekstowo genius lrclib
 
 edit:
     itemfields: track title artist album albumartist
@@ -17,12 +21,12 @@ lastgenre:
     auto: false
 
 convert:
-    dest: ~/music/MusicCompressed128
+    dest: ~/Music/library_opus128/
     never_convert_lossy_files: yes
     copy_album_art: yes
-    embed: yes
+    embed: no
     format: opus128
-    album_art_maxwidth: 500
+    album_art_maxwidth: 1000
     formats:
         opus192:
             command: opusenc --bitrate 192 $source $dest
