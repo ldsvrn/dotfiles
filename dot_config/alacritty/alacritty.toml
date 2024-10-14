@@ -1,50 +1,9 @@
-[colors.bright]
-black = "#928374"
-blue = "#83a598"
-cyan = "#8ec07c"
-green = "#b8bb26"
-magenta = "#d3869b"
-red = "#fb4934"
-white = "#ebdbb2"
-yellow = "#fabd2f"
+# theme
+import = ["~/.config/alacritty/dracula.toml"]
 
-[colors.cursor]
-cursor = "CellForeground"
-text = "CellBackground"
-
-[colors.dim]
-black = "#32302f"
-blue = "#076678"
-cyan = "#427b58"
-green = "#79740e"
-magenta = "#8f3f71"
-red = "#9d0006"
-white = "#928374"
-yellow = "#b57614"
-
-[colors.normal]
-black = "#282828"
-blue = "#458588"
-cyan = "#689d6a"
-green = "#98971a"
-magenta = "#b16286"
-red = "#cc241d"
-white = "#a89984"
-yellow = "#d79921"
-
-[colors.primary]
-background = "#282828"
-bright_foreground = "#f9f5d7"
-dim_foreground = "#f2e5bc"
-foreground = "#fbf1c7"
-
-[colors.selection]
-background = "CellForeground"
-text = "CellBackground"
-
-[colors.vi_mode_cursor]
-cursor = "CellForeground"
-text = "CellBackground"
+[window.dimensions]
+columns = 160
+lines = 40
 
 [cursor]
 blink_interval = 750
@@ -57,6 +16,12 @@ shape = "Beam"
 
 [font]
 size = 11.0
+
+[shell]
+program = "/bin/zsh"
+
+[window]
+opacity = 0.99
 
 [font.bold]
 family = "FiraCode Nerd Font"
@@ -73,6 +38,8 @@ style = "Italic"
 [font.normal]
 family = "FiraCode Nerd Font"
 style = "Regular"
+
+# --------- KEYBINDS ---------
 
 [[keyboard.bindings]]
 action = "Paste"
@@ -500,9 +467,3 @@ mods = "Control"
 action = "DecreaseFontSize"
 key = "NumpadSubtract"
 mods = "Control"
-
-[shell]
-program = "/bin/zsh"
-
-[window]
-opacity = 0.99

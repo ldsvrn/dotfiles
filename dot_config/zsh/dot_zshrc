@@ -149,6 +149,7 @@ twitch() {
     mpv "https://twitch.tv/$@" 2> /dev/null
 }
 
-fastfetch
+#fastfetch
+pfetch
 
 eval "$(starship init zsh)"
