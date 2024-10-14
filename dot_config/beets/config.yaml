@@ -45,7 +45,7 @@ convert:
             command: ffmpeg -i $source -q:a 0 $dest
             extension: mp3
         mp3max:
-            cnoommand: ffmpeg -i $source -b:a 320k $dest
+            command: ffmpeg -i $source -b:a 320k $dest
             extension: mp3
         mp3v3:
             command: ffmpeg -i $source -q:a 3 $dest
