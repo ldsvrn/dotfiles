@@ -82,3 +82,6 @@ alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 #tailscale
 alias tup="sudo systemctl start tailscaled && tailscale up --accept-routes"
 alias tdown="tailscale down && sudo systemctl stop tailscaled"
+
+# dns debug
+alias dig="drill"

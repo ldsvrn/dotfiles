@@ -1,5 +1,11 @@
 # theme
-import = ["~/.config/alacritty/dracula.toml"]
+general.import = [
+  # uncomment the flavour you want below:
+  #"~/.config/alacritty/catppuccin-latte.toml"
+  # "~/.config/alacritty/catppuccin-frappe.toml"
+  "~/.config/alacritty/catppuccin-macchiato.toml"
+  #"~/.config/alacritty/catppuccin-mocha.toml"
+]
 
 [window.dimensions]
 columns = 160
@@ -17,7 +23,7 @@ shape = "Beam"
 [font]
 size = 11.0
 
-[shell]
+[terminal.shell]
 program = "/bin/zsh"
 
 [window]
@@ -467,3 +473,5 @@ mods = "Control"
 action = "DecreaseFontSize"
 key = "NumpadSubtract"
 mods = "Control"
+
+[terminal]
