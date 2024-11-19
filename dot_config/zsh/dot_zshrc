@@ -10,11 +10,6 @@ if [ $(tty) = "/dev/tty1" ]; then
     startx
 fi
 
-# term title
-case $TERM in alacritty*)
-    precmd () {print -Pn "\e]0;%~\a"}
-    ;;
-esac
 
 ### SETOPT ###
 setopt appendhistory
