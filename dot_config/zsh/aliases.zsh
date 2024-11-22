@@ -27,8 +27,8 @@ alias cope='code'
 alias gitc='git commit -a -S'
 alias gitp='git push'
 
-# Alias for dotfiles bare git repo
-alias config='git --git-dir=$HOME/.dotfiles-repo/ --work-tree=$HOME' 
+# Alias for dotfiles bare git repo, replaced by chezmoi
+#alias config='git --git-dir=$HOME/.dotfiles-repo/ --work-tree=$HOME' 
 
 # wireguard
 alias wgup='wg-quick up wg0'
@@ -39,11 +39,11 @@ alias wg-quick='wg-quick'
 alias flex='neofetch'
 alias die='shutdown -P now'
 
-# exa is ls
-alias ls='exa -la --group --color=always --sort=type --icons --octal-permissions --colour-scale --git'
-alias ll='exa -l --group --color=always --sort=type --icons --octal-permissions'
-alias l='exa --color=always --sort=type --icons'
-alias la='exa -a --color=always --sort=type --icons'
+# eza is ls
+alias ls='eza -la --group --color=auto --sort=type --icons --octal-permissions --git'
+alias ll='eza -l --group --color=auto --sort=type --icons --octal-permissions'
+alias l='eza --color=auto --sort=type --icons'
+alias la='eza -a --color=auto --sort=type --icons'
 
 # vim is nvim
 alias vim='nvim'

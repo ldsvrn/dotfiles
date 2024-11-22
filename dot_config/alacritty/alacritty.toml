@@ -3,8 +3,8 @@ general.import = [
   # uncomment the flavour you want below:
   #"~/.config/alacritty/catppuccin-latte.toml"
   # "~/.config/alacritty/catppuccin-frappe.toml"
-  "~/.config/alacritty/catppuccin-macchiato.toml"
-  #"~/.config/alacritty/catppuccin-mocha.toml"
+  #"~/.config/alacritty/catppuccin-macchiato.toml"
+  "~/.config/alacritty/catppuccin-mocha.toml"
 ]
 
 [window.dimensions]
@@ -27,7 +27,7 @@ size = 11.0
 program = "/bin/zsh"
 
 [window]
-opacity = 0.99
+opacity = 1
 
 [font.bold]
 family = "Intel One Mono"
