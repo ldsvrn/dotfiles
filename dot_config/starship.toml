@@ -48,7 +48,7 @@ symbol = ".NET "
 
 [directory]
 read_only = " ro"
-truncation_length = 5
+truncation_length = 8
 truncation_symbol = "..."
 truncate_to_repo = false
 
