@@ -72,5 +72,5 @@ convert:
             command: ffmpeg -i $source -ar 44100 -ac 2 -sample_fmt s16 $dest
             extension: aiff
         alac_ipod:
-            command: ffmpeg -i $source -acodec alac -nv -f ipod $dest
+            command: ffmpeg -i $source -acodec alac -vn -f ipod $dest
             extension: m4a
