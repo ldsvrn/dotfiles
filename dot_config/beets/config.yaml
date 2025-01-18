@@ -11,7 +11,8 @@ fuzzy:
 
 lyrics:
     auto: no 
-    sources: genius lrclib tekstowo
+    sources: lrclib genius tekstowo
+    synced: yes
 
 edit:
     itemfields: track title artist album albumartist
@@ -33,7 +34,6 @@ convert:
             extension: opus
         opus128:
             command: opusenc --bitrate 128 $source $dest
-            extension: opus
             extension: opus
         mp3:
             command: ffmpeg -i $source -q:a 1 $dest
@@ -62,4 +62,15 @@ convert:
         flac_art:
             command: ffmpeg -i $source -c:a flac -c:v copy $dest
             extension: flac
-        removeart: music_convert $source $dest
+        wav:
+            command: ffmpeg -i $source -ar 44100 -ac 2 -sample_fmt s16 $dest
+            extension: wav
+        aac:
+            command: ffmpeg -i $source -c:a aac -b:a 320k -ar 44100 -ac 2 $dest
+            extension: m4a
+        aiff:
+            command: ffmpeg -i $source -ar 44100 -ac 2 -sample_fmt s16 $dest
+            extension: aiff
+        alac_ipod:
+            command: ffmpeg -i $source -acodec alac -nv -f ipod $dest
+            extension: m4a
