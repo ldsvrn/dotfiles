@@ -6,9 +6,9 @@
 export GPG_TTY=$(tty) #if not zshenv 
 
 # startx on login on tty1
-if [ $(tty) = "/dev/tty1" ]; then
-    startx
-fi
+#if [ $(tty) = "/dev/tty1" ]; then
+#    startx
+#fi
 
 
 ### SETOPT ###
@@ -142,6 +142,10 @@ cpv() {
 # play twitch from terminal:
 twitch() {
     mpv "https://twitch.tv/$@" 2> /dev/null
+}
+
+det() {
+    nohup $@ > /dev/null &
 }
 
 #fastfetch

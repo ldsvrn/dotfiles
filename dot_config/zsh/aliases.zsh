@@ -17,11 +17,13 @@ elif grep -q Arch /etc/os-release; then
     alias py='python'
     alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
     alias update-mirrors='sudo reflector --country France,Germany,Netherlands --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+    alias updateall='sudo pacman -Syu --noconfirm && flatpak update -y'
 fi
 
-# Typing mistakes
+# typos
 alias systemclt='systemctl'
 alias cope='code'
+alias pign='ping'
 
 # git
 alias gitc='git commit -a -S'
@@ -36,7 +38,7 @@ alias wgdown='wg-quick down wg0'
 alias wg-quick='wg-quick'
 
 # aaaaaa
-alias flex='neofetch'
+alias flex='fastfetch'
 alias die='shutdown -P now'
 
 # eza is ls

@@ -33,7 +33,7 @@ convert:
             command: opusenc --bitrate 192 $source $dest
             extension: opus
         opus128:
-            command: opusenc --bitrate 128 $source $dest
+            command: ffmpeg -i $source -b:a 128k $dest
             extension: opus
         mp3:
             command: ffmpeg -i $source -q:a 1 $dest
@@ -72,5 +72,8 @@ convert:
             command: ffmpeg -i $source -ar 44100 -ac 2 -sample_fmt s16 $dest
             extension: aiff
         alac_ipod:
-            command: ffmpeg -i $source -acodec alac -vn -f ipod $dest
+            # this is a script that keeps the original sample rate if < 48kHz
+            # and converts to 48kHz if the source file is 96kHz,
+            # the old iPod does not supports it withour rockbox
+            command: alac_ipod $source $dest
             extension: m4a
