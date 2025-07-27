@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Ensure ffmpeg and ffprobe are installed
+if ! command -v ffmpeg &> /dev/null || ! command -v ffprobe &> /dev/null; then
+  echo "Error: ffmpeg and ffprobe are required but not installed."
+  exit 1
+fi
+
+# Check if input file is provided
+if [ $# -ne 2 ]; then
+  echo "Usage: $0 <input_file> <output_file>"
+  exit 1
+fi
+
+input_file="$1"
+output_file="$2"
+
+# Get the sample rate of the input file
+sample_rate=$(ffprobe -i "$input_file" -show_entries stream=sample_rate -v quiet -of csv="p=0")
+
+if [[ "$sample_rate" == "96000" ]]; then
+  echo "Converting 96 kHz to 48 kHz..."
+  ffmpeg -i "$input_file" -ar 48000 -acodec alac -vn -f ipod "$output_file"
+elif [[ "$sample_rate" == "44100" || "$sample_rate" == "48000" ]]; then
+  echo "Keeping original sample rate ($sample_rate kHz)..."
+  ffmpeg -i "$input_file" -acodec alac -vn -f ipod "$output_file"
+else
+  echo "Unsupported sample rate: $sample_rate."
+  #ffmpeg -i "$input_file" -acodec alac "$output_file"
+  exit 1
+fi
+
