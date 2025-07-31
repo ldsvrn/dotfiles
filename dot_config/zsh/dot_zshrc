@@ -149,6 +149,6 @@ det() {
 }
 
 #fastfetch
-pfetch
+fastfetch -c ~/.config/fastfetch/smallfetch.jsonc
 
 eval "$(starship init zsh)"
