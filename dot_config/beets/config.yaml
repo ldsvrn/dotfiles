@@ -1,7 +1,7 @@
 directory: ~/Music/library/
 library: ~/Music/musiclibrary.db
-plugins: fetchart fuzzy edit convert smartplaylist info lyrics describe 
-# disabled: pbm analyser web lastgenre fish summarize mpdupdate
+plugins: fetchart fuzzy edit convert smartplaylist info lyrics unimported permissions
+# disabled: pbm analyser web lastgenre fish summarize mpdupdate describe
 fetchart:
     sources: filesystem coverart itunes amazon
 
@@ -20,6 +20,10 @@ edit:
 
 lastgenre:
     auto: false
+
+permissions:
+    file: 644
+    dir: 755
 
 convert:
     dest: ~/Music/library_opus128/

@@ -30,19 +30,19 @@ program = "/bin/zsh"
 opacity = 1
 
 [font.bold]
-family = "Intel One Mono"
+family = "FiraCode Nerd Font Mono"
 style = "Bold"
 
 [font.bold_italic]
-family = "Intel One Mono"
+family = "FiraCode Nerd Font Mono"
 style = "Bold Italic"
 
 [font.italic]
-family = "Intel One Mono"
+family = "FiraCode Nerd Font Mono"
 style = "Italic"
 
 [font.normal]
-family = "Intel One Mono"
+family = "FiraCode Nerd Font Mono"
 style = "Regular"
 
 # --------- KEYBINDS ---------
