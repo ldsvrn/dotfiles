@@ -7,7 +7,7 @@ export SAVEHIST=10000
 # pfetch
 PF_INFO="ascii title os shell kernel uptime pkgs memory"
 #export QT_STYLE_OVERRIDE=qt5ct
-export QT_QPA_PLATFORMTHEME=qt5ct
+#export QT_QPA_PLATFORMTHEME=qt5ct
 export TERM="xterm-256color"
 export EDITOR="nvim"
 #export VISUAL="code"

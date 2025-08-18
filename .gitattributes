@@ -5,3 +5,5 @@ dot_config/awesome/lain/** linguist-vendored
 dot_config/awesome/themes/mytheme/** linguist-vendored
 dot_config/mpv/scripts/** linguist-vendored
 dot_config/zsh/plugins/** linguist-vendored
+dot_config/nvim/init.lua linguist-vendored
+dot_config/nvim/dot_git/** linguist-vendored
