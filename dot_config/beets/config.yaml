@@ -10,7 +10,7 @@ fuzzy:
     prefix: '~'
 
 lyrics:
-    auto: no 
+    auto: yes
     sources: lrclib genius tekstowo
     synced: yes
 

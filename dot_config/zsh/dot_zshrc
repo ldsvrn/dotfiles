@@ -10,6 +10,14 @@ export GPG_TTY=$(tty) #if not zshenv
 #    startx
 #fi
 
+# if in terminal, set tab name to current dir (dirty way i guess)
+case $TERM in
+    xterm*)
+        precmd () {print -Pn "\e]0;$USER@$(hostnamectl hostname):$(pwd | sed -r "s/\/home\/$USER/~/g")\a"}
+        ;;
+esac
+
+
 
 ### SETOPT ###
 setopt appendhistory
